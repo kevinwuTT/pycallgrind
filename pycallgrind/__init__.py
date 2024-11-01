@@ -103,6 +103,8 @@ class callgrind(object):
 
     @staticmethod
     def _wrap_function(func, tag=None):
+        if isinstance(tag, bytes):
+            tag = tag.decode("utf-8")
         if not (tag is None or isinstance(tag, str)):
             raise TypeError("tag must be str, got {0}".format(type(tag)))
         try:
